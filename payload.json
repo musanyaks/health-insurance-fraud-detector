@@ -1,0 +1,8 @@
+{
+  "claim_id": "CLMTEST001",
+  "member_id": "MBR00123",
+  "provider_id": "PRV0042",
+  "code": "MRISC",
+  "claim_amount": 72000,
+  "claim_date": "2024-12-05"
+}

@@ -1,0 +1,27 @@
+# environments
+.venv/
+venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+*.egg-info/
+
+# data: everything except the committed sample
+data/*
+!data/sample/
+
+# artifacts
+models/
+monitoring/reports/
+*.joblib
+
+# secrets
+.env
+
+# R
+.Rhistory
+.RData
+renv/library/
+
+# notebooks
+.ipynb_checkpoints/

@@ -1,0 +1,27 @@
+paths:
+  raw: data/raw/claims.parquet
+  sample: data/sample/sample_claims.parquet
+  processed_dir: data/processed
+  models_dir: models
+
+split:
+  train_fraction: 0.8          # TIME-based split: earliest 80% of dates = train
+
+expensive_codes: [SURG01, SURG02, MRISC, CTSCN]
+
+rules:
+  duplicate_window_days: 7
+  amount_outlier_multiple: 3.0
+  amount_outlier_min_provider_claims: 20
+  member_freq_window_days: 30
+  member_freq_threshold: 5
+  rare_expensive_min_provider_claims: 20
+
+scoring:
+  ml_weight: 0.65
+  rule_weight: 0.35
+  high_threshold: 70
+  medium_threshold: 40
+
+queue:
+  size: 500                    # rows exported for the Shiny investigation queue

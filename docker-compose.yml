@@ -1,0 +1,27 @@
+services:
+  postgres:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: fraud
+      POSTGRES_PASSWORD: fraud
+      POSTGRES_DB: fraud
+    ports:
+      - "5432:5432"
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      # - ./database/schema.sql:/docker-entrypoint-initdb.d/schema.sql  # enable in P2
+
+  api:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - DATABASE_URL=postgresql://fraud:fraud@postgres:5432/fraud
+    volumes:
+      - ./models:/app/models       # trained model baked in at train time
+      - ./data:/app/data
+    depends_on:
+      - postgres
+
+volumes:
+  pgdata:
